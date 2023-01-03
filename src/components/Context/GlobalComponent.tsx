@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Context from './Context';
 import {Link, BrowserRouter, Routes, Route } from 'react-router-dom'
-import Mapa from './../Mapita/Mapa';
+import Mapa from './../Mapa/Mapa';
 import Home from './../Home/Home';
 import Test from './../Test/Test';
 import Login from './../Login/Login';
