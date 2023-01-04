@@ -72,7 +72,7 @@ const UsuarioFrenteManzana = () => {
 			key={key} 
 			ref={componentRef} 
 			data={ collection } 
-			style={{ color: '#00b4d8', fillOpacity:1, weight:10}}
+			style={{ color: '#00b4d8', fillOpacity:1, weight:9}}
 			onEachFeature={ addEventsToLayers } 
 		/>
 	</>

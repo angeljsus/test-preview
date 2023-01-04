@@ -45,7 +45,6 @@ const UsuarioManzanas = () => {
 				.then(() => _setEstadoManzanaSeleccionada(mi_estado) )
 				.then(() => _setCvgeoSeleccionada(CVEGEO) )
 				.then(() => _layerMzaSeleccionada.setStyle({fillOpacity:.7}) )
-
 		}
 	}, [_layerMzaSeleccionada])
 
@@ -98,17 +97,17 @@ const UsuarioManzanas = () => {
 					return e.target; 
 				})
 		})
-		layer.bindTooltip(CVE_MZA, {
-			direction:'center', 
-			opacity:.7, 
-			direction: 'center',
-			permanent: true,
-			... { 
-				className:'bind-manzana-tooltip', 
-				interactive: false,
-			}
-		})
-		.openTooltip()
+		// layer.bindTooltip(CVE_MZA, {
+		// 	direction:'center', 
+		// 	opacity:.7, 
+		// 	direction: 'center',
+		// 	permanent: true,
+		// 	... { 
+		// 		className:'bind-manzana-tooltip', 
+		// 		interactive: false,
+		// 	}
+		// })
+		// .openTooltip()
 	} 
 
 	return <>

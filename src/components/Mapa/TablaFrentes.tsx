@@ -1,8 +1,9 @@
 import Context from './../Context/Context';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 const TablaFrentes = () => {
 	const { _layersFrenteGroup, _layerMzaSeleccionada } = useContext(Context);
+	const [frenteCounter, setFrenteCounter] = useState(0);
 
 	return <>
 		{
@@ -16,7 +17,7 @@ const TablaFrentes = () => {
    			</div>
    			<div className="content-tabla-a">
    			{
-   				_layersFrenteGroup ?
+   				_layersFrenteGroup ? 
    				_layersFrenteGroup.getLayers().map( (layer, i) => {
    					const { NOMVIAL, ORIGEN, TIPOVIAL} = layer.feature.geometry.properties;
    					return (
@@ -27,7 +28,6 @@ const TablaFrentes = () => {
           <div className="colum-row-a">{TIPOVIAL}</div>
           <div className="colum-row-a">{NOMVIAL}</div>
           <div className="colum-row-a">{ORIGEN}</div>
-
          </div>
    					)
    				})

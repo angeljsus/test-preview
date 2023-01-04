@@ -19,18 +19,13 @@ const GlobalComponent = () => {
   // New vars
   const [_map, _setMap] = useState(null)
   const [ _layersMzasGroup, _setLayersMzasGroup ] = useState(null);
-  // const [_, _mzasUser] = useState(null)
 
-  // const _mapRef = useRef(null);
-  // const _geoRefComponentMzas = useRef(null);
   const _geoRefComponentFrentes = useRef(null);
 
 	const globals = 
 	{
     L, db,
-    // _mapRef,
     _map, _setMap,
-    // _geoRefComponentMzas,
     _layerMzaSeleccionada, _setLayerMzaSeleccionada,
     _estadoManzanaSeleccionada, _setEstadoManzanaSeleccionada,
     _cvgeoSeleccionada, _setCvgeoSeleccionada,
