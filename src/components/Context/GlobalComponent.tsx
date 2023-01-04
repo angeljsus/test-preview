@@ -10,7 +10,7 @@ import { db, updateManzanaByCvgeo, getRandomCveoper } from './../../logic/databa
 
 const GlobalComponent = () => {
 
-  const [ _cveoper, _setCveoper ] = useState('201111112');
+  const [ _cveoper, _setCveoper ] = useState('201111111');  //201111112
   const [ _layerMzaSeleccionada, _setLayerMzaSeleccionada ] = useState(null);
   const [ _estadoManzanaSeleccionada, _setEstadoManzanaSeleccionada ] = useState(null);
   const [ _cvgeoSeleccionada, _setCvgeoSeleccionada ] = useState(null);
@@ -52,6 +52,18 @@ const GlobalComponent = () => {
     })
   }
 
+  const button = {
+    border: '1px solid rgba(0,0,0,.2)',
+    display:'flex',
+    width: '100%',
+    background:'#adb5bd',
+    justifyContent:'center',
+    alignItems:'center',
+    color: 'black',
+    opacity: .7,
+    fontWeight: 'bold'
+  }
+
 	return <>
 		<Context.Provider value={ globals }>
 			<BrowserRouter>
@@ -64,7 +76,6 @@ const GlobalComponent = () => {
       </div>
       <div className="list-vars">
         <div className="item-var"><b>CVEOPER:</b> {_cveoper}</div>        
-        <div className="item-var"> <button onClick={() => { getRandomCveoper().then( c => _setCveoper(c)) }} >Random</button> </div>        
         {
           _layerMzaSeleccionada ? 
           <>
@@ -72,12 +83,16 @@ const GlobalComponent = () => {
             <div className="item-var"><b>Cvgeo:</b> { _layerMzaSeleccionada.feature.geometry.properties.CVEGEO }</div>       
     				<div className="item-var">
               <button 
+                style={button}
                 onClick={ () => updateEstadoManzana(_layerMzaSeleccionada.feature.geometry.properties.CVEGEO) }>
                 Cambiar estado</button>
             </div>      	
           </>:
             false
         }
+        <div className="item-var"> 
+          <button style={button} onClick={() => { getRandomCveoper().then( c => _setCveoper(c)) }} >Random</button> 
+        </div>        
       </div>
     </div>
     <div className="app-displayer">

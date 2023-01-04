@@ -16,7 +16,7 @@ const TablaFrentes = () => {
    			</div>
    			<div className="content-tabla-a">
    			{
-   				_layersFrenteGroup ? 
+   				_layersFrenteGroup ?
    				_layersFrenteGroup.getLayers().map( (layer, i) => {
    					const { NOMVIAL, ORIGEN, TIPOVIAL} = layer.feature.geometry.properties;
    					return (

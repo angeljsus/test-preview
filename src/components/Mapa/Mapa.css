@@ -1,3 +1,11 @@
+.leaflet-tooltip.bind-manzana-tooltip {
+	background: none;
+	border: none;
+	font-weight: bold;
+	box-shadow: none;
+	color: rgba(0,0,0,.6)
+}
+
 *{
 	box-sizing: border-box;
 	padding: 0;

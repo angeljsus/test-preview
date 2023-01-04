@@ -8,6 +8,7 @@ const UsuarioManzanas = () => {
 
 	const {
 	 _cveoper,
+	 _map,
 		_layerMzaSeleccionada, _setLayerMzaSeleccionada,
 		_cvgeoSeleccionada, _setCvgeoSeleccionada,
 		_setEstadoManzanaSeleccionada,_estadoManzanaSeleccionada,
@@ -22,6 +23,9 @@ const UsuarioManzanas = () => {
 		if( _cveoper ) {
 			return getFeatureCollection(_cveoper)
 			.then( result => setCollection(result) )
+			.then( () => _setCvgeoSeleccionada(null) )
+			.then( () => _setEstadoManzanaSeleccionada(null) )
+			.then( () => _setLayerMzaSeleccionada(null) )
 		}
 	}, [ _cveoper ])
 
@@ -81,7 +85,7 @@ const UsuarioManzanas = () => {
 	}
 
 	const addEventsToLayers = (feature, layer) => {
-		const { mi_estado, CVEGEO } = feature.geometry.properties;
+		const { mi_estado, CVEGEO, CVE_MZA } = feature.geometry.properties;
 		let color = 'gray';
 		if(mi_estado === 1){
 			color = 'yellow';
@@ -94,14 +98,25 @@ const UsuarioManzanas = () => {
 					return e.target; 
 				})
 		})
+		layer.bindTooltip(CVE_MZA, {
+			direction:'center', 
+			opacity:.7, 
+			direction: 'center',
+			permanent: true,
+			... { 
+				className:'bind-manzana-tooltip', 
+				interactive: false,
+			}
+		})
+		.openTooltip()
 	} 
-	
+
 	return <>
 		<GeoJSON 
 			key={key} 
 			ref={componentRef} 
 			data={ collection } 
-			onEachFeature={ addEventsToLayers } 
+			onEachFeature={ addEventsToLayers }
 		/>
 	</>;
 }
