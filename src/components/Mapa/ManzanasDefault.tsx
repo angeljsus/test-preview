@@ -5,9 +5,28 @@ import Context from '../Context/Context';
 
 
 const ManzanasDefault = () => {
-	const { _zoom } = useContext(Context);
+	const { _map } = useContext(Context);
 	const componentRef = useRef(null);
 	const [ elements, setElements] = useState(null)
+
+	useEffect( () => {
+		_map.on({
+			zoomend : e => showOrHideTooltip( e.target.getZoom() )
+		})
+	}, [ _map ])
+
+	const showOrHideTooltip = zoom => {
+		console.log(zoom)
+		if(zoom === 16 || zoom === 15){
+			componentRef.current.eachLayer( layer => {
+				if(zoom === 16){
+					layer.openTooltip()
+				} else {
+					layer.closeTooltip()
+				}
+			})
+		}
+	}
 
 	const setNameOfLayerManzana = (feature, layer) => {
 		const { CVE_MZA } = feature.properties;

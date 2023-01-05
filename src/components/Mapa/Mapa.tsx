@@ -16,31 +16,18 @@ const Mapa = () => {
 
 	const { _setMap } = useContext(Context);
 
-	const MapEvents = () => {
-		// const elements = document.getElementsByClassName('bind-manzana-tooltip');
-		// const map = useMapEvents({
-			// zoomend : e => changeZoomState(e)
-		// })
-  return null
-	}
+	// const MapEvents = () => {
+		// const map = useMapEvents({ zoomend : e => changeZoomState(e) });
+  // return null
+	// }
 
 	return <>
 		<div className="map-container">
 			<div className="map-display">
 				<MapContainer {... config } whenReady={ e => _setMap(e.target) }>
 					<TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'></TileLayer>
-					<MapEvents />
+					{/*<MapEvents />*/}
 					<ManzanasDefault />
-				{/*	<GeoJSON 
-						data={ geoJsonAreaManzanas } 
-  				interactive={ false } 
-						style={ { color: '#80ed99', fillOpacity: 0.3, weight:0 } }
-					/>*/}
-					{/*<GeoJSON 
-						data={ geoJsonEjesManzanas } 
-  				interactive={false} 
-						style={ { color: '#98c1d9', fillOpacity: 1, opacity:.5 } }
-					/>*/}
 					<UsuarioManzanas />
 					<UsuarioFrenteManzana />
 				</MapContainer>
