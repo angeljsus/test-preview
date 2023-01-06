@@ -53,6 +53,19 @@ const loadTables = () => {
 			`)
 
 			tx.executeSql(`
+				CREATE TABLE IF NOT EXISTS tbl_usuario (
+					cveoper_usuario VARCHAR(10),
+					cuenta_usuario VARCHAR(50),
+					nombre_usuario VARCHAR(50),
+					paterno_usuario VARCHAR(50),
+					materno_usuario VARCHAR(50),
+					password_usuario VARCHAR(50),
+					nivel_usuario int,
+					PRIMARY KEY (cveoper_usuario)
+				);
+			`)
+
+			tx.executeSql(`
 				CREATE TABLE IF NOT EXISTS usuario(
 					id_usuario integer primary key,
 					cuenta_usuario varchar(199),
@@ -60,7 +73,7 @@ const loadTables = () => {
 					password_usuario varchar(100)
 				);
 			`)
-			// insert into usuario values (1,'angel.trujillo','Ángel de Jesús', '${@Code[]1820}')
+			// insert into usuario values ('000000001','angel.trujillo','Ángel de Jesús','Aguilar','Trujillo','${@Code[]1820}', 1);
 
 		}, err => reject(err), () => resolve() )
 	})
@@ -95,7 +108,7 @@ const selectUserByCuenta = nombreCuenta => {
 				SELECT 
 					*
 				FROM
-					usuario
+					tbl_usuario
 				WHERE 
 					cuenta_usuario = ?
 			`, [ nombreCuenta ], (tx, results) => {

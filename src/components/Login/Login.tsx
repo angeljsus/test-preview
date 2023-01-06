@@ -92,6 +92,7 @@ const existeCuenta = cuentaUsuario => {
 const obtenerAutenticacionLocal = (userName, password) => {
 	const { encriptarSHA256 } = apiFunctions; 
 	const encriptedPasswor = encriptarSHA256(password); 
+	// console.log(encriptedPasswor)
 	return selectUserByCuenta(userName)
 	.then( result => {
 		const cantidad = result.length;

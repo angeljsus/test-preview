@@ -16,7 +16,7 @@ const ManzanasDefault = () => {
 	}, [ _map ])
 
 	const showOrHideTooltip = zoom => {
-		console.log(zoom)
+		console.log('Zoom position: ',zoom)
 		if(zoom === 16 || zoom === 15){
 			componentRef.current.eachLayer( layer => {
 				if(zoom === 16){
