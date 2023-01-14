@@ -1,11 +1,13 @@
 import { ipcRenderer, contextBridge } from 'electron';
 import CryptoJS from 'crypto-js';
+import path from 'path';
 
 declare global {
   interface Window {
     Main: typeof api;
     ipcRenderer: typeof ipcRenderer;
     CryptoJS: typeof CryptoJS;
+    path : typeof path;
   }
 }
 
@@ -51,6 +53,8 @@ const myFunctions = {
 }
 
 contextBridge.exposeInMainWorld('apiFunctions', myFunctions  );
+contextBridge.exposeInMainWorld('path', path  );
+
 
 // let ciphertext = CryptoJS.AES.encrypt('my message', 'secret key 123').toString();
 // console.log(ciphertext)

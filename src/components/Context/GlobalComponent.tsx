@@ -5,6 +5,7 @@ import Mapa from './../Mapa/Mapa';
 import Home from './../Home/Home';
 import Test from './../Test/Test';
 import Login from './../Login/Login';
+import ActualizarDatosServer from './../Cotejo/ActualizarDatosServer';
 import L from 'Leaflet';
 import { db, updateManzanaByCvgeo, getRandomCveoper } from './../../logic/database';
 
@@ -15,6 +16,7 @@ const GlobalComponent = () => {
   const [ _estadoManzanaSeleccionada, _setEstadoManzanaSeleccionada ] = useState(null);
   const [ _cvgeoSeleccionada, _setCvgeoSeleccionada ] = useState(null);
   const [ _layersFrenteGroup, _setLayersFrenteGroup ] = useState(null);
+  const _urlServer = 'http://localhost/servidor_cotejo/';
 
   // New vars
   const [_map, _setMap] = useState(null)
@@ -24,6 +26,7 @@ const GlobalComponent = () => {
 
 	const globals = 
 	{
+    _urlServer,
     L, db,
     _map, _setMap,
     _layerMzaSeleccionada, _setLayerMzaSeleccionada,
@@ -68,6 +71,7 @@ const GlobalComponent = () => {
         <button className="navar-button"><Link className="nav-link" to="/mapa">Mapa</Link></button>
         <button className="navar-button"><Link className="nav-link" to="/login">Login</Link></button>
         <button className="navar-button"><Link className="nav-link" to="/test">Test</Link></button>
+        <button className="navar-button"><Link className="nav-link" to="/update">Actualizar Datos</Link></button>
       </div>
       <div className="list-vars">
         <div className="item-var"><b>CVEOPER:</b> {_cveoper}</div>        
@@ -96,6 +100,7 @@ const GlobalComponent = () => {
           <Route path="/mapa" element={ <Mapa/>} />
           <Route path="/login" element={ <Login/>} />
           <Route path="/test" element={ <Test/>} />
+          <Route path="/update" element={ <ActualizarDatosServer/>} />
         </Routes>
     </div>
    </BrowserRouter>
